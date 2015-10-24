@@ -17,6 +17,7 @@
     //print_r($qs);
     //echo $_SERVER['REQUEST_URI'];
     define('__ROOT__', dirname(__FILE__) . '/');
+    
     require_once 'conf.php';
     require_once 'router.php';
     
