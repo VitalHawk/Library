@@ -7,15 +7,26 @@ require_once DIR_MODEL . 'model_category.php';
 
 class ControllerBook extends Controller {
     public function Index($params) {
-        $this->smarty->assign('books', Book::Find($this->conn, $params['pubId'], $params['catId']));
-
-        $this->smarty->assign('pubs', array(-1 => '- Все -') + Publisher::GetAll($this->conn));
-        $this->smarty->assign('pubId', $params['pubId']);
-
-        $this->smarty->assign('cats', array(-1 => '- Все -') + Category::GetAll($this->conn));
-        $this->smarty->assign('catId', $params['catId']);
         
-        $this->smarty->display('books.tpl');
+        $this->view->Show('books.tpl',
+                array(
+                    'books' => Book::Find($this->conn, $params['pubId'], $params['catId']),
+                    'pubs' => array(-1 => '- Все -') + Publisher::GetAll($this->conn),
+                    'pubId' => $params['pubId'],
+                    'cats' => array(-1 => '- Все -') + Category::GetAll($this->conn),
+                    'catId' => $params['catId']
+                    )
+                );
+        
+//        $this->smarty->assign('books', Book::Find($this->conn, $params['pubId'], $params['catId']));
+//
+//        $this->smarty->assign('pubs', array(-1 => '- Все -') + Publisher::GetAll($this->conn));
+//        $this->smarty->assign('pubId', $params['pubId']);
+//
+//        $this->smarty->assign('cats', array(-1 => '- Все -') + Category::GetAll($this->conn));
+//        $this->smarty->assign('catId', $params['catId']);
+//        
+//        $this->smarty->display('books.tpl');
     }
     
     public function Delete($params) {

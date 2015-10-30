@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
+    <div>
         <form method="get" action="/Book/Index">
             {html_options name="catId" options=$cats selected=$catId}
             {html_options name="pubId" options=$pubs selected=$pubId}
@@ -31,5 +25,4 @@
                 </tr>
             {/foreach}
         </table>
-    </body>
-</html>
+    </div>
