@@ -3,7 +3,12 @@ require_once 'controller.php';
 
 class ControllerLogin extends Controller {
     public function Index($params) {
-        $_SESSION['user'] = $params['login'];
+        if (isset($params['login'])) {
+            $_SESSION['user'] = $params['login'];
+        }
+        else {
+            unset($_SESSION['user']);
+        }
         header("Location: /", TRUE, 301);
     }
 }
