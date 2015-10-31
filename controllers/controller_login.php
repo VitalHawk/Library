@@ -9,6 +9,6 @@ class ControllerLogin extends Controller {
         else {
             unset($_SESSION['user']);
         }
-        header("Location: /", TRUE, 301);
+        header('Location: ' . (isset($params['uri']) ? $params['uri'] : '/'), TRUE, 307);
     }
 }
