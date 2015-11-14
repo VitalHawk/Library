@@ -36,6 +36,15 @@ Create Table BooksAuthors (
     foreign key(book_id) references Books(id)
 ) ENGINE=InnoDB;
 
+Create Table Users (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name nvarchar(255) NOT NULL,
+    surname nvarchar(255) NOT NULL,
+    login nvarchar(255) NOT NULL,
+    password char(32) NOT NULL,
+    isAdmin boolean NOT NULL
+) ENGINE=InnoDB;
+
 Insert Into Categories (name) Values
     ('Поэзия'),
     ('Проза');
@@ -90,3 +99,8 @@ Insert Into BooksAuthors (book_id, author_id) Values
         (Select id From Books Where name = 'Сборник стихов'),
         (Select id From Authors Where surname = 'Толстой')
     );
+
+Insert Into Users (name, surname, login, password, isAdmin) Values
+    ('Admin', 'Admin', 'admin', md5('admin'), 1),
+    ('User', 'User', 'user', md5('user'), 0),
+    ('Виталий', 'Ястребов', 'vit', md5('123'), 0)
