@@ -13,8 +13,6 @@ try
         header("Location: /" . $prm, TRUE, 301);
     }
 
-    
-    session_start();
     //print_r($GLOBALS);
     //print_r($_REQUEST);
     //print_r($_SERVER);
@@ -23,8 +21,10 @@ try
     define('__ROOT__', dirname(__FILE__) . '/');
     
     require_once 'conf.php';
+    require_once 'user.php';
     require_once 'router.php';
     
+    session_start();
     
     $req_uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
     //$post_get = (filter_input_array(INPUT_POST) ?: array()) + (filter_input_array(INPUT_GET) ?: array());
