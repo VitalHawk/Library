@@ -29,6 +29,9 @@ class Book {
                 $this->data[$name] = $value;
         }
 
+    public static function Insert($conn, $params) {
+        return NULL;
+    }
     public static function Find($conn, $pubId = NULL, $catId = NULL) {
         $q = "Select b.id, b.name, b.date, b.publisher_id, p.name, b.category_id, c.name, ".
                 "a.id, a.name, a.surname, a.birthdate " .

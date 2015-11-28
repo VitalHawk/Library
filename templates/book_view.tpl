@@ -1,0 +1,3 @@
+<div>
+    Book name: {$book->name} ...
+</div>

@@ -30,7 +30,14 @@ class ControllerBook extends Controller {
     }
     
     public function Delete($params) {
-        Book::Delete($this->conn, $params['id']);
+        if (user_admin())
+        {
+            Book::Delete($this->conn, $params['id']);
+        }
+        else
+        {
+            $this->view->Show('access_denied.tpl', array('mode' => 'Удаление книги'));
+        }
     }
     
     public function Update($params) {  
@@ -38,7 +45,21 @@ class ControllerBook extends Controller {
     }
     
     public function Insert($params) {  
-        
+        if (user_admin())
+        {
+            if ($book = Book::Insert($this->conn, $params)) // save_book
+            {
+                $this->view->Show('book_inserted.tpl', array('book' => $book));            
+            }
+            else
+            {
+                $this->Add($params);
+            }
+        }
+        else
+        {
+            $this->view->Show('access_denied.tpl', array('mode' => 'Удаление книги'));
+        }
     }
     
     public function Edit($params) {
@@ -50,7 +71,22 @@ class ControllerBook extends Controller {
     }
     
     public function Add($params) {
-        
+        //print_r($_SESSION['user']);
+        if (user_admin())
+        {
+            $this->view->Show('book_add.tpl',
+                array(
+                    'books' => Book::Find($this->conn, $params['pubId'], $params['catId']),
+                    'pubs' => array(-1 => '- Все -') + Publisher::GetAll($this->conn),
+                    'pubId' => $params['pubId'],
+                    'cats' => array(-1 => '- Все -') + Category::GetAll($this->conn),
+                    'catId' => $params['catId']
+                    ));
+        }
+        else
+        {
+            $this->view->Show('access_denied.tpl', array('mode' => 'Добавление книги'));
+        }
     }
     
 }

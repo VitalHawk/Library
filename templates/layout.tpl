@@ -6,6 +6,7 @@
     <body>
         {include file='login.tpl'}
         <h1>Мой супер сайт!!!</h1>
+        {include file="menu.tpl"}
         {include file="$content_tpl"}
     </body>
 </html>

@@ -26,3 +26,7 @@ class User {
         return $this->name;
     }
 }
+
+function user_admin() {
+    return (isset($_SESSION['user']) && $_SESSION['user']->isAdmin);
+}
