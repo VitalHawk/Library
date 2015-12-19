@@ -41,7 +41,7 @@ class ControllerLogin extends Controller {
             header('Location: /Login/UserView/login/' . $user->login, TRUE, 307);
         }
         else {
-            header('Location: /Login/Register/', TRUE, 307);        
+            header('Location: /Login/RegisterForm/', TRUE, 307);        
         }
     }
     

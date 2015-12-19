@@ -1,4 +1,4 @@
-<form action="/Login/RegisterForm" method="POST">
+<form action="/Login/Register" method="POST">
     <label for="surname">Фамилия</label>
     <input type="text" name="surname" value="{$user->surname}" />
     <br>
