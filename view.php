@@ -1,7 +1,9 @@
 <?php
 
 require_once 'conf.php';
-require_once 'smarty.php';
+//require_once 'smarty.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
 
 class View extends Smarty {
     private $layout;

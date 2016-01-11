@@ -1,0 +1,13 @@
+{
+    "name": "VitalHawk/library",
+    "description": "MVC Project Library.",
+    "authors": [
+        {
+            "name": "vit",
+            "email": "vit@hawk.ru"
+        }
+    ],
+    "require": {
+        "smarty/smarty": "dev-master"
+    }
+}
